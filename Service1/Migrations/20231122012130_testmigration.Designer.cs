@@ -11,8 +11,8 @@ using Service1;
 namespace Service1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231121175556_initialMigration")]
-    partial class initialMigration
+    [Migration("20231122012130_testmigration")]
+    partial class testmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,16 +27,18 @@ namespace Service1.Migrations
             modelBuilder.Entity("Service1.Models.DataSheet", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

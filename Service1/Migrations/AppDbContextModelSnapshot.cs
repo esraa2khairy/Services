@@ -24,10 +24,8 @@ namespace Service1.Migrations
             modelBuilder.Entity("Service1.Models.DataSheet", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     b.Property<string>("Color")
                         .IsRequired()
@@ -50,7 +48,7 @@ namespace Service1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Data");
+                    b.ToTable("Data", (string)null);
                 });
 #pragma warning restore 612, 618
         }
