@@ -49,7 +49,7 @@ namespace Service1.Controllers
             {
                 file.CopyTo(fileStream);
             }
-
+            _context.Data.RemoveRange(_context.Data.Where(x=>x.Id >0 ));
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             using (var stream = System.IO.File.Open(fullPath, FileMode.Open, FileAccess.Read))
             {
@@ -63,7 +63,7 @@ namespace Service1.Controllers
                     {
                         var row = new DataSheet
                         {
-                           
+                            Id = Convert.ToInt32(dataSet.Tables[0].Rows[i][0]),
                             Name = dataSet.Tables[0].Rows[i][1].ToString(),
                             Description = dataSet.Tables[0].Rows[i][2].ToString(),
                             Location = dataSet.Tables[0].Rows[i][3].ToString(),
